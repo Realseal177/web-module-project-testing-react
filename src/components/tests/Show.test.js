@@ -5,12 +5,35 @@ import userEvent from '@testing-library/user-event';
 
 import Show from './../Show';
 
-test('renders without errors', ()=>{});
+const testShow = {
+    name: 'test show',
+    summary: 'test summary',
+    seasons: [
+        {
+            name: 'Season 1',
+            id: 0,
+            episodes: [],
+        },
+        {
+            name: 'Season 2',
+            id: 1,
+            episodes: [],
+        },
+    ]
+};
 
-test('renders Loading component when prop show is null', () => {});
+test('renders without errors', () => {
+    render(<Show show={testShow} selectedSeason={'none'}/>);
+});
+
+test('renders Loading component when prop show is null', () => {
+    render(<Show show={null} />)
+    const loading = screen.queryByTestId('loading-container');
+    expect(loading).toBeInTheDocument();
+});
 
 
-test('renders same number of options seasons are passed in', ()=>{});
+test('renders same number of options seasons are passed in', () => {});
 
 test('handleSelect is called when an season is selected', () => {});
 
